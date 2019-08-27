@@ -33,14 +33,32 @@ app.get('/api/tasks', (req, res) => {
 });
 
 app.post('/api/tasks', (req, res) => {
-    console.log('hit the put route');
-    console.log(req.body.task);
     client.query(`
         INSERT INTO tasks(task)
         VALUES($1)
         RETURNING *;
     `,
     [req.body.task]
+    )
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+
+app.put('/api/tasks/:id', (req, res) => {
+    client.query(`
+        UPDATE tasks SET 
+            task = $1,
+            is_complete = $2
+        WHERE id = $3
+        RETURNING *;
+    `,
+    [req.body.task, req.body.is_complete, req.body.id]
     )
         .then(result => {
             res.json(result.rows);

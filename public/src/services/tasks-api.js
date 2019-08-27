@@ -29,3 +29,14 @@ export function addTask(task) {
     return fetchWithError(url, postObj);
 }
 
+export function updateTask(task) {
+    console.log('update task', task.id);
+    const url = `${URL}/tasks/${task.id}`;
+    const putObj = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(task),
+    };
+    return fetchWithError(url, putObj);
+}
+

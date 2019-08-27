@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import { TodoList } from './TodoList.js';
-import { getTasks, addTask } from '../../services/tasks-api.js';
+import { getTasks, addTask, updateTask } from '../../services/tasks-api.js';
 
 export class App extends Component {
 
@@ -8,18 +8,23 @@ export class App extends Component {
         const header = new Header();
         dom.prepend(header.renderDOM());
 
-        const list = new TodoList({ tasks: [] });
-        dom.querySelector('main').prepend(list.renderDOM());
-
         const newTodo = dom.querySelector('#new-todo');
         const newTask = dom.querySelector('#new-task');
+
+        // Create the task list and append to DOM. Provide callbacks for updating task completion or task deletion
+        const list = new TodoList({ 
+            tasks: [],
+            onUpdate: task => {
+                updateTask(task);
+            }
+        });
+        dom.querySelector('main').prepend(list.renderDOM());
+
+        // Listen for new task additions. Callback function updates the task list
         newTodo.addEventListener('submit', event => {
             event.preventDefault();
 
-            const taskObj = {
-                task: newTask.value
-            };
-
+            const taskObj = { task: newTask.value };
             addTask(taskObj)
                 .then(taskResponse => {
                     this.state.tasks.push(taskResponse[0]);
@@ -33,14 +38,9 @@ export class App extends Component {
                 .finally(() => {
                     //loading.update({ loading: false });
                 });
-
         });
 
-
-        
-
-
-
+        // Update the task list from server data
         getTasks()
             .then(data => {
                 this.state.tasks = data;
@@ -52,9 +52,7 @@ export class App extends Component {
             .finally(() => {
                 //loading.update({ loading: false });
             });
-
     }
-
 
 
     renderHTML() {
@@ -79,6 +77,7 @@ export class App extends Component {
         `;
     }
 }
+
 
 class Header extends Component {
     renderHTML() {
