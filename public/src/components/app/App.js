@@ -22,7 +22,6 @@ export class App extends Component {
                         list.update(this.state.tasks);
                     })
                     .finally(() => {
-                        // loading.update({ loading: false });
                     });
             },
             onRemove: task => {
@@ -33,7 +32,6 @@ export class App extends Component {
                         list.update(this.state.tasks);
                     })
                     .finally(() => {
-                        // loading.update({ loading: false });
                     });
             },
         });
@@ -55,7 +53,6 @@ export class App extends Component {
                     console.log(err);
                 })
                 .finally(() => {
-                    //loading.update({ loading: false });
                 });
         });
 
@@ -69,7 +66,6 @@ export class App extends Component {
                 console.log(err);
             })
             .finally(() => {
-                //loading.update({ loading: false });
             });
     }
 
@@ -91,7 +87,7 @@ export class App extends Component {
                             </div>
                         </div>
                     </form>
-                </main>        
+                </main>
             </div>
         `;
     }
