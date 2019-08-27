@@ -30,7 +30,6 @@ export function addTask(task) {
 }
 
 export function updateTask(task) {
-    console.log('update task', task.id);
     const url = `${URL}/tasks/${task.id}`;
     const putObj = {
         method: 'PUT',

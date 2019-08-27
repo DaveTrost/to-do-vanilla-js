@@ -23,7 +23,7 @@ class TodoItem extends Component {
     onRender(dom) {
         const checkbox = dom.querySelector('input[type="checkbox"]');
         checkbox.addEventListener('click', () => {
-            this.props.task.is_complete = !this.props.task.is_complete;
+            this.props.task.isComplete = !this.props.task.isComplete;
             this.props.onUpdate(this.props.task);
         });
         
@@ -37,7 +37,7 @@ class TodoItem extends Component {
         return /*html*/`
             <li class="collection-item todo-item">
                 <label>
-                    <input type="checkbox" ${this.props.task.is_complete ? 'checked' : ''}/>
+                    <input type="checkbox" ${this.props.task.isComplete ? 'checked' : ''}/>
                     <span>${this.props.task.task}</span>
                 </label>
                 <i class="material-icons red-text">delete</i>

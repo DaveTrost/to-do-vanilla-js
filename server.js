@@ -20,7 +20,12 @@ app.use(express.json()); // enable reading incoming json data
 
 app.get('/api/tasks', (req, res) => {
     client.query(`
-        SELECT * FROM tasks;
+        SELECT
+            id,
+            task,
+            is_complete AS "isComplete"
+        FROM tasks
+        ORDER BY id;
     `)
         .then(result => {
             res.json(result.rows);
@@ -58,7 +63,7 @@ app.put('/api/tasks/:id', (req, res) => {
         WHERE id = $3
         RETURNING *;
     `,
-    [req.body.task, req.body.is_complete, req.body.id]
+    [req.body.task, req.body.isComplete, req.body.id]
     )
         .then(result => {
             res.json(result.rows);
