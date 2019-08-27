@@ -5,8 +5,8 @@ client.connect()
         return client.query(`
             CREATE TABLE IF NOT EXISTS tasks (
                 id SERIAL PRIMARY KEY NOT NULL,
-                task VARCHAR(256) NOT NULL UNIQUE,
-                inactive BOOLEAN NOT NULL DEFAULT FALSE
+                task VARCHAR(256) NOT NULL,
+                is_complete BOOLEAN NOT NULL DEFAULT FALSE
             );
         `);
     })
