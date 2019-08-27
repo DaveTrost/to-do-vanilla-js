@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import { TodoList } from './TodoList.js';
+import { getTasks } from '../../services/tasks-api.js';
 
 export class App extends Component {
 
@@ -16,13 +17,21 @@ export class App extends Component {
             console.log('submit');
         });
 
-        const url = `/api/tasks`;
-        return fetch(url)
-            .then(response => response.json())
+
+
+
+        
+        getTasks()
             .then(data => {
-                console.log('data from server', data);
                 list.update({ tasks: data });
+            })
+            .catch(err => {
+                console.log(err);
+            })
+            .finally(() => {
+                //loading.update({ loading: false });
             });
+
     }
 
 
