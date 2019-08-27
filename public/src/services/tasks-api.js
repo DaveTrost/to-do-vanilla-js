@@ -19,3 +19,13 @@ export function getTasks() {
     return fetchWithError(url);
 }
 
+export function addTask(task) {
+    const url = `${URL}/tasks`;
+    const postObj = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(task),
+    };
+    return fetchWithError(url, postObj);
+}
+
