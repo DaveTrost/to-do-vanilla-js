@@ -1,0 +1,24 @@
+.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-left: 5%;
+    padding-right: 3%;
+    background-color: #eee;
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+    .fixed-bottom {
+        padding-left: 12.5%;
+        padding-right: 10%;
+    }
+}
+  
+@media only screen and (min-width: 993px) {
+    .fixed-bottom {
+        padding-left: 15%;
+        padding-right: 12%;
+    }
+}
