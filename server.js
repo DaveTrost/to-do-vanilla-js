@@ -41,7 +41,10 @@ app.post('/api/tasks', (req, res) => {
     client.query(`
         INSERT INTO tasks(task)
         VALUES($1)
-        RETURNING *;
+        RETURNING
+            id,
+            task,
+            is_complete AS "isComplete";
     `,
     [req.body.task]
     )
@@ -56,12 +59,16 @@ app.post('/api/tasks', (req, res) => {
 });
 
 app.put('/api/tasks/:id', (req, res) => {
+    console.log('task new completion status is: ', req.body.isComplete);
     client.query(`
         UPDATE tasks SET 
             task = $1,
             is_complete = $2
         WHERE id = $3
-        RETURNING *;
+        RETURNING
+            id,
+            task,
+            is_complete AS "isComplete";
     `,
     [req.body.task, req.body.isComplete, req.body.id]
     )
