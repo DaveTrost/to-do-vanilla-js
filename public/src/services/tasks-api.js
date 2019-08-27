@@ -39,3 +39,11 @@ export function updateTask(task) {
     return fetchWithError(url, putObj);
 }
 
+export function removeTask(task) {
+    const url = `${URL}/tasks/${task.id}`;
+    const deleteObj = {
+        method: 'DELETE',
+    };
+    return fetchWithError(url, deleteObj);
+}
+

@@ -59,7 +59,6 @@ app.post('/api/tasks', (req, res) => {
 });
 
 app.put('/api/tasks/:id', (req, res) => {
-    console.log('task new completion status is: ', req.body.isComplete);
     client.query(`
         UPDATE tasks SET 
             task = $1,
@@ -71,6 +70,28 @@ app.put('/api/tasks/:id', (req, res) => {
             is_complete AS "isComplete";
     `,
     [req.body.task, req.body.isComplete, req.body.id]
+    )
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+
+
+app.delete('/api/tasks/:id', (req, res) => {
+    client.query(`
+        DELETE FROM tasks
+        WHERE id = $1
+        RETURNING
+            id,
+            task,
+            is_complete AS "isComplete";
+    `,
+    [req.params.id]
     )
         .then(result => {
             res.json(result.rows);

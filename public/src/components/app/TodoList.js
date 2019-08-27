@@ -7,6 +7,7 @@ export class TodoList extends Component {
             const item = new TodoItem({ 
                 task: taskObj,
                 onUpdate: this.props.onUpdate,
+                onRemove: this.props.onRemove,
             });
             dom.appendChild(item.renderDOM());
         });
@@ -29,7 +30,7 @@ class TodoItem extends Component {
         
         const deleteTask = dom.querySelector('label + i');
         deleteTask.addEventListener('click', () => {
-            console.log('ready to delete ', this.props.task);
+            this.props.onRemove(this.props.task);
         });
     }
 

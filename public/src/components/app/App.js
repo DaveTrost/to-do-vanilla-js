@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import { TodoList } from './TodoList.js';
-import { getTasks, addTask, updateTask } from '../../services/tasks-api.js';
+import { getTasks, addTask, updateTask, removeTask } from '../../services/tasks-api.js';
 
 export class App extends Component {
 
@@ -24,7 +24,18 @@ export class App extends Component {
                     .finally(() => {
                         // loading.update({ loading: false });
                     });
-            }
+            },
+            onRemove: task => {
+                removeTask(task)
+                    .then(() => {
+                        const positionToRemove = this.state.tasks.indexOf(task);
+                        this.state.tasks.splice(positionToRemove, 1);
+                        list.update(this.state.tasks);
+                    })
+                    .finally(() => {
+                        // loading.update({ loading: false });
+                    });
+            },
         });
         dom.querySelector('main').prepend(list.renderDOM());
 
