@@ -1,7 +1,7 @@
 {
-  "name": "08-fsjs-server",
+  "name": "todo-app-in-vanilla-javascript",
   "version": "1.0.0",
-  "description": "**Author**: Your Name Goes Here **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)",
+  "description": "**Author**: Dave Trost **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)",
   "main": "server.js",
   "scripts": {
     "lint": "eslint .",
@@ -15,7 +15,7 @@
     "recreate-tables": "npm run drop-tables && npm run create-tables",
     "setup-db": "npm run recreate-tables && npm run load-seed-data"
   },
-  "author": "Marty Nelson @martypdx",
+  "author": "Dave Trost",
   "license": "ISC",
   "keywords": [],
   "dependencies": {
