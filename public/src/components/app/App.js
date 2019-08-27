@@ -15,7 +15,16 @@ export class App extends Component {
         const list = new TodoList({ 
             tasks: [],
             onUpdate: task => {
-                updateTask(task);
+                updateTask(task)
+                    .then(newTaskData => {
+                        const positionToUpdate = this.state.tasks.indexOf(task);
+                        this.state.tasks.splice(positionToUpdate, 1, newTaskData[0]);
+                        console.log(`existing completion status is ${task.isComplete} and updated status is ${newTaskData[0].isComplete}`); 
+                        list.update(this.state.tasks);
+                    })
+                    .finally(() => {
+                        // loading.update({ loading: false });
+                    });
             }
         });
         dom.querySelector('main').prepend(list.renderDOM());
