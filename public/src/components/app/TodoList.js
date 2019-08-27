@@ -30,7 +30,10 @@ class TodoItem extends Component {
         
         const deleteTask = dom.querySelector('label + i');
         deleteTask.addEventListener('click', () => {
-            this.props.onRemove(this.props.task);
+            dom.classList.add('fadeOutRight', 'animated', 'fast');
+            setTimeout(() => {
+                this.props.onRemove(this.props.task);
+            }, 500);
         });
     }
 
