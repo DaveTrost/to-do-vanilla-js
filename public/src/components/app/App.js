@@ -15,7 +15,6 @@ export class App extends Component {
         const newTask = dom.querySelector('#new-task');
         newTodo.addEventListener('submit', event => {
             event.preventDefault();
-            console.log('submit');
 
             const taskObj = {
                 task: newTask.value
