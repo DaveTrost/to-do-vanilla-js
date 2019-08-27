@@ -3,13 +3,10 @@ import Component from '../Component.js';
 export class TodoList extends Component {
 
     onRender(dom) {
-        const item = new TodoItem();
-        dom.appendChild(item.renderDOM());        
-        dom.appendChild(item.renderDOM());        
-        dom.appendChild(item.renderDOM());        
-        dom.appendChild(item.renderDOM());        
-        dom.appendChild(item.renderDOM());        
-        dom.appendChild(item.renderDOM());        
+        this.props.tasks.forEach(taskObj => {
+            const item = new TodoItem({ task: taskObj });
+            dom.appendChild(item.renderDOM());
+        });
     }
 
     renderHTML() {
@@ -25,7 +22,7 @@ class TodoItem extends Component {
             <li class="collection-item todo-item">
                 <label>
                     <input type="checkbox"/>
-                    <span>get groceries get groceries get groceries get groceries</span>
+                    <span>${this.props.task.task}</span>
                 </label>
                 <i class="material-icons red-text">delete</i>
             </li>

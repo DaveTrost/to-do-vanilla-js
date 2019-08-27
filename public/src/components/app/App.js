@@ -7,7 +7,7 @@ export class App extends Component {
         const header = new Header();
         dom.prepend(header.renderDOM());
 
-        const list = new TodoList();
+        const list = new TodoList({ tasks: [] });
         dom.querySelector('main').prepend(list.renderDOM());
 
         const newTodo = dom.querySelector('#new-todo');
@@ -15,7 +15,17 @@ export class App extends Component {
             event.preventDefault();
             console.log('submit');
         });
+
+        const url = `/api/tasks`;
+        return fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log('data from server', data);
+                list.update({ tasks: data });
+            });
     }
+
+
 
     renderHTML() {
         return /*html*/`
