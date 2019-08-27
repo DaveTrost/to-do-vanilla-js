@@ -84,7 +84,7 @@ export class App extends Component {
                         <div class="row">
                             <div class="input-field col s10">
                                 <i class="material-icons prefix">playlist_add</i>
-                                <input id="new-task" type="text" name="new-task" placeholder="New Task" class="validate" required>
+                                <input id="new-task" type="text" name="new-task" placeholder="New Task" class="validate" required autofocus>
                             </div>
                             <div class="input-field col s2">
                                 <button type="submit" class="btn-floating cyan pulse"><i class="material-icons">add</i></button>
