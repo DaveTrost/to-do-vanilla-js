@@ -3,10 +3,12 @@ const TOKEN_KEY = 'token';
 
 export default {
     getToken() {
-        return JSON.parse(localStorage.getItem(TOKEN_KEY) || {}).token;
+        const item = localStorage.getItem(TOKEN_KEY);
+        return item ? (JSON.parse(item).token) : null;
     },
     getId() {
-        return JSON.parse(localStorage.getItem(TOKEN_KEY) || {}).id;
+        const item = localStorage.getItem(TOKEN_KEY);
+        return item ? (JSON.parse(item).id) : null;
     },
     setToken(tokenObj) {
         return localStorage.setItem(TOKEN_KEY, JSON.stringify(tokenObj));
