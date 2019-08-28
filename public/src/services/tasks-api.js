@@ -1,4 +1,13 @@
+import store from './store.js';
+
 const URL = '/api';
+
+const token = store.getToken();
+if(!token && location.pathname !== '/public/auth.html') {
+    // const searchParams = new URLSearchParams();
+    // searchParams.set('redirect', location.pathname);
+    location = 'auth.html';
+}
 
 function fetchWithError(url, options) {
     return fetch(url, options)
@@ -65,4 +74,9 @@ export function userRegister(credentials) {
         body: JSON.stringify(credentials),
     };
     return fetchWithError(url, postObj);
+}
+
+export function userInfo(email) {
+    const url = `${URL}/users/${email}`;
+    return fetchWithError(url);
 }

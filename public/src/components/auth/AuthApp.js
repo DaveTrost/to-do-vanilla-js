@@ -3,6 +3,7 @@ import { Header } from '../app/Header.js';
 import { Login } from './Login.js';
 import { Register } from './Register.js';
 import { userLogin, userRegister } from '../../services/tasks-api.js';
+import store from '../../services/store.js';
 
 export class AuthApp extends Component {
 
@@ -70,9 +71,8 @@ class Background extends Component {
     }
 }
 
-function openApp() {
-// function success(user) {
-    // store.setToken(user.token);
+function openApp(user) {
+    store.setToken(user.token);
     // const searchParams = new URLSearchParams(location.search);
     // location = searchParams.get('redirect') || './cat-list.html';
     location = './index.html';

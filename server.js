@@ -42,6 +42,8 @@ app.use(express.json()); // enable reading incoming json data
 // setup authentication routes
 app.use('/api/auth', authRoutes);
 
+// everything that starts with "/api" below here requires an auth token!
+app.use('/api', ensureAuth);
 
 app.get('/api/tasks', (req, res) => {
     client.query(`
@@ -127,6 +129,27 @@ app.delete('/api/tasks/:id', (req, res) => {
             });
         });
 });
+
+app.get('/users/:email', (req, res) => {
+    client.query(`
+        SELECT
+            id,
+            email,
+            display_name AS "name"
+        FROM users
+        WHERE email = $1;
+    `,
+    [req.body.email])
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+
 
 // Start the server
 app.listen(PORT, () => {
