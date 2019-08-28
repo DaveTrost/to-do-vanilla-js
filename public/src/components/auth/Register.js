@@ -28,15 +28,15 @@ export class Register extends Component {
                         <h5 class="centered">Register</h5>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">person</i>
-                            <input id="icon_prefix" type="text" name="name" placeholder="name" class="validate">
+                            <input type="text" name="name" placeholder="name" class="validate">
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">email</i>
-                            <input id="icon_prefix" type="text" name="email" placeholder="email" class="validate">
+                            <input type="email" name="email" placeholder="email" class="validate" required>
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
-                            <input id="icon_prefix" type="text" name="password" placeholder="password" class="validate">
+                            <input type="password" name="password" placeholder="password" class="validate" required>
                         </div>
                         <div class="input-field col s12">
                             <button type="submit" class="waves-effect waves-light btn-large">Sign Up</button>
