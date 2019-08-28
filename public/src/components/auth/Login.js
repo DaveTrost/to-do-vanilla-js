@@ -2,8 +2,21 @@ import Component from '../Component.js';
 
 export class Login extends Component {
 
-    onRender() {
-        //empty
+    onRender(dom) {
+        const onLogin = this.props.onLogin;
+
+        const form = dom.querySelector('form#login');
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+            const credentials = {
+                email: formData.get('email'),
+                password: formData.get('password'),
+            };
+
+            onLogin(credentials);
+        });
     }
 
     renderHTML() {
@@ -14,11 +27,11 @@ export class Login extends Component {
                         <h5 class="centered">Sign In</h5>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">email</i>
-                            <input id="icon_prefix" type="text" name="email-address" placeholder="email" class="validate">
+                            <input id="icon_prefix" type="text" name="email" placeholder="email" class="validate">
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
-                            <input id="icon_prefix" type="text" name="email-address" placeholder="password" class="validate">
+                            <input id="icon_prefix" type="text" name="password" placeholder="password" class="validate">
                         </div>
                         <div class="input-field col s12">
                             <button type="submit" class="waves-effect waves-light btn-large">Login</button>

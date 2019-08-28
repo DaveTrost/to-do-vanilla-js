@@ -11,9 +11,18 @@ export class AuthApp extends Component {
         const header = new Header();
         dom.prepend(header.renderDOM());
         
-        const login = new Login();
+        const login = new Login({
+            onLogin: () => {
+                console.log('login');
+            }
+        });
         dom.appendChild(login.renderDOM());
-        const register = new Register();
+
+        const register = new Register({
+            onRegister: () => {
+                console.log('reg');
+            }
+        });
         dom.appendChild(register.renderDOM());
 
         const loginContainer = dom.querySelector('.login.container');
