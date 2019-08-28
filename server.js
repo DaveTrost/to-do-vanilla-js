@@ -45,15 +45,17 @@ app.use('/api/auth', authRoutes);
 // everything that starts with "/api" below here requires an auth token!
 app.use('/api', ensureAuth);
 
-app.get('/api/tasks', (req, res) => {
+app.get('/api/tasks/:user_id', (req, res) => {
     client.query(`
         SELECT
             id,
             task,
             is_complete AS "isComplete"
         FROM tasks
+        WHERE user_id = $1
         ORDER BY id;
-    `)
+    `,
+    [req.params.user_id])
         .then(result => {
             res.json(result.rows);
         })
@@ -64,16 +66,16 @@ app.get('/api/tasks', (req, res) => {
         });
 });
 
-app.post('/api/tasks', (req, res) => {
+app.post('/api/tasks/:user_id', (req, res) => {
     client.query(`
-        INSERT INTO tasks(task)
-        VALUES($1)
+        INSERT INTO tasks(task, user_id)
+        VALUES($1, $2)
         RETURNING
             id,
             task,
             is_complete AS "isComplete";
     `,
-    [req.body.task]
+    [req.body.task, req.params.user_id]
     )
         .then(result => {
             res.json(result.rows);
