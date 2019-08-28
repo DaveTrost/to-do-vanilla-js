@@ -1,4 +1,5 @@
 import Component from '../Component.js';
+import { Header } from './Header.js';
 import { TodoList } from './TodoList.js';
 import { getTasks, addTask, updateTask, removeTask } from '../../services/tasks-api.js';
 
@@ -93,13 +94,3 @@ export class App extends Component {
     }
 }
 
-
-class Header extends Component {
-    renderHTML() {
-        return /*html*/`
-            <nav class="nav-wrapper">
-                <p class="brand-logo center">To-Do List</p>
-            </nav>
-        `;
-    }
-}
