@@ -47,3 +47,24 @@ export function removeTask(task) {
     return fetchWithError(url, deleteObj);
 }
 
+export function userLogin(credentials) {
+    console.log('api login', credentials);
+    const url = `${URL}/auth/signin`;
+    const postObj = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(credentials),
+    };
+    return fetchWithError(url, postObj);
+}
+
+export function userRegister(credentials) {
+    console.log('api register', credentials);
+    const url = `${URL}/auth/signup`;
+    const postObj = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(credentials),
+    };
+    return fetchWithError(url, postObj);
+}

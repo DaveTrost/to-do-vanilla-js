@@ -2,6 +2,7 @@ import Component from '../Component.js';
 import { Header } from '../app/Header.js';
 import { Login } from './Login.js';
 import { Register } from './Register.js';
+import { userLogin, userRegister } from '../../services/tasks-api.js';
 
 export class AuthApp extends Component {
 
@@ -12,15 +13,16 @@ export class AuthApp extends Component {
         dom.prepend(header.renderDOM());
         
         const login = new Login({
-            onLogin: () => {
-                console.log('login');
+            onLogin: credentials => {
+                userLogin(credentials);
+
             }
         });
         dom.appendChild(login.renderDOM());
 
         const register = new Register({
-            onRegister: () => {
-                console.log('reg');
+            onRegister: credentials => {
+                userRegister(credentials);
             }
         });
         dom.appendChild(register.renderDOM());
