@@ -10,7 +10,8 @@ client.query(`
     CREATE TABLE IF NOT EXISTS tasks (
         id SERIAL PRIMARY KEY NOT NULL,
         task VARCHAR(256) NOT NULL,
-        is_complete BOOLEAN NOT NULL DEFAULT FALSE
+        is_complete BOOLEAN NOT NULL DEFAULT FALSE,
+        user_id INTEGER NOT NULL REFERENCES users(id)
     );
 `)
     .then(
