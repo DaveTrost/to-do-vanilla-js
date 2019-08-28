@@ -7,9 +7,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 const client = require('./lib/client');
 
-// Database Client
-client.connect();
-
 // Application Setup
 const app = express();
 const PORT = process.env.PORT;
