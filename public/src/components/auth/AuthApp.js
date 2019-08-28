@@ -14,14 +14,21 @@ export class AuthApp extends Component {
         
         const login = new Login({
             onLogin: credentials => {
-                userLogin(credentials);
-
+                userLogin(credentials)
+                    .then(user => {
+                        console.log('success', user);
+                    })
+                    .catch(err => {
+                        console.log('error', err);
+                        // errors.textContent = err;
+                    });
             }
         });
         dom.appendChild(login.renderDOM());
 
         const register = new Register({
             onRegister: credentials => {
+                credentials.name = credentials.name || credentials.email;
                 userRegister(credentials);
             }
         });
