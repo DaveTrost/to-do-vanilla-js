@@ -8,7 +8,7 @@ export class Login extends Component {
 
     renderHTML() {
         return /*html*/`
-            <div class="container row offset-top hide">
+            <div class="login container row offset-top hide">
                 <div class="auth-form col s10 offset-s1">
                     <form id="login" action="#">
                         <h5 class="centered">Sign In</h5>
@@ -26,7 +26,7 @@ export class Login extends Component {
                     </form>
                 </div>
                 <div class="col s10 offset-s1 auth-switch">
-                    <a href="#">Need an account? <b>Sign up!</b></a>
+                    <a id="switch-to-register" href="#">Need an account? <b>Sign up!</b></a>
                 </div>
             </div>
         `;

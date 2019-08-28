@@ -8,15 +8,28 @@ export class AuthApp extends Component {
     onRender(dom) {
         const background = new Background();
         dom.prepend(background.renderDOM());
-
         const header = new Header();
         dom.prepend(header.renderDOM());
         
         const login = new Login();
         dom.appendChild(login.renderDOM());
-
         const register = new Register();
         dom.appendChild(register.renderDOM());
+
+        const loginContainer = dom.querySelector('.login.container');
+        const switchToLogin = dom.querySelector('#switch-to-login');
+        const registerContainer = dom.querySelector('.register.container');
+        const switchToRegister = dom.querySelector('#switch-to-register');
+        switchToLogin.addEventListener('click', () => {
+            loginContainer.classList.remove('hide');
+            registerContainer.classList.add('hide');
+        });
+        switchToRegister.addEventListener('click', () => {
+            registerContainer.classList.remove('hide');
+            loginContainer.classList.add('hide');
+        });
+        
+
 
         // // Listen for new task additions. Callback function updates the task list
         // newTodo.addEventListener('submit', event => {

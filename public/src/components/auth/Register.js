@@ -8,7 +8,7 @@ export class Register extends Component {
 
     renderHTML() {
         return /*html*/`
-            <div class="container row offset-top ">
+            <div class="register container row offset-top ">
                 <div class="auth-form col s10 offset-s1">
                     <form id="register" action="#">
                         <h5 class="centered">Register</h5>
@@ -30,7 +30,7 @@ export class Register extends Component {
                     </form>
                 </div>
                 <div class="col s10 offset-s1 auth-switch">
-                    <a href="#">Have an account? <b>Login Here</b></a>
+                    <a id="switch-to-login" href="#">Have an account? <b>Login Here</b></a>
                 </div>
             </div>
         `;
