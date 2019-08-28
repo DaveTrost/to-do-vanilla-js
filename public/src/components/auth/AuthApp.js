@@ -1,5 +1,7 @@
 import Component from '../Component.js';
 import { Header } from '../app/Header.js';
+import { Login } from './Login.js';
+import { Register } from './Register.js';
 
 export class AuthApp extends Component {
 
@@ -9,8 +11,13 @@ export class AuthApp extends Component {
 
         const header = new Header();
         dom.prepend(header.renderDOM());
-
         
+        const login = new Login();
+        dom.appendChild(login.renderDOM());
+
+        const register = new Register();
+        dom.appendChild(register.renderDOM());
+
         // // Listen for new task additions. Callback function updates the task list
         // newTodo.addEventListener('submit', event => {
         //     event.preventDefault();
