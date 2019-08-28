@@ -15,7 +15,7 @@ function fetchWithError(url, options) {
         options.headers = options.headers || {};
         options.headers.Authorization = token;
     }
-    
+
     return fetch(url, options)
         .then(response => {
             if(response.ok) {
@@ -29,13 +29,13 @@ function fetchWithError(url, options) {
         });
 }
 
-export function getTasks() {
-    const url = `${URL}/tasks`;
+export function getTasks(userId) {
+    const url = `${URL}/tasks/${userId}`;
     return fetchWithError(url);
 }
 
-export function addTask(task) {
-    const url = `${URL}/tasks`;
+export function addTask(task, userId) {
+    const url = `${URL}/tasks/${userId}`;
     const postObj = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

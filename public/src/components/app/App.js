@@ -2,6 +2,7 @@ import Component from '../Component.js';
 import { Header } from './Header.js';
 import { TodoList } from './TodoList.js';
 import { getTasks, addTask, updateTask, removeTask } from '../../services/tasks-api.js';
+import store from '../../services/store.js';
 
 export class App extends Component {
 
@@ -43,7 +44,7 @@ export class App extends Component {
             event.preventDefault();
 
             const taskObj = { task: newTask.value };
-            addTask(taskObj)
+            addTask(taskObj, store.getId())
                 .then(taskResponse => {
                     this.state.tasks.push(taskResponse[0]);
                     list.update(this.state.tasks);
@@ -58,7 +59,7 @@ export class App extends Component {
         });
 
         // Update the task list from server data
-        getTasks()
+        getTasks(store.getId())
             .then(data => {
                 this.state.tasks = data;
                 list.update({ tasks: data });
