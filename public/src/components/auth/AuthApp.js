@@ -16,11 +16,10 @@ export class AuthApp extends Component {
             onLogin: credentials => {
                 userLogin(credentials)
                     .then(user => {
-                        console.log('success', user);
+                        openApp(user);
                     })
                     .catch(err => {
-                        console.log('error', err);
-                        // errors.textContent = err;
+                        alert(err);
                     });
             }
         });
@@ -29,7 +28,13 @@ export class AuthApp extends Component {
         const register = new Register({
             onRegister: credentials => {
                 credentials.name = credentials.name || credentials.email;
-                userRegister(credentials);
+                userRegister(credentials)
+                    .then(user => {
+                        openApp(user);
+                    })
+                    .catch(err => {
+                        alert(err);
+                    });
             }
         });
         dom.appendChild(register.renderDOM());
@@ -46,27 +51,6 @@ export class AuthApp extends Component {
             registerContainer.classList.remove('hide');
             loginContainer.classList.add('hide');
         });
-        
-
-
-        // // Listen for new task additions. Callback function updates the task list
-        // newTodo.addEventListener('submit', event => {
-        //     event.preventDefault();
-
-        //     const taskObj = { task: newTask.value };
-        //     addTask(taskObj)
-        //         .then(taskResponse => {
-        //             this.state.tasks.push(taskResponse[0]);
-        //             list.update(this.state.tasks);
-        //             newTodo.reset();
-        //             newTask.focus();
-        //         })
-        //         .catch(err => {
-        //             console.log(err);
-        //         })
-        //         .finally(() => {
-        //         });
-        // });
 
     }
 
@@ -85,3 +69,12 @@ class Background extends Component {
         `;
     }
 }
+
+function openApp() {
+// function success(user) {
+    // store.setToken(user.token);
+    // const searchParams = new URLSearchParams(location.search);
+    // location = searchParams.get('redirect') || './cat-list.html';
+    location = './index.html';
+}
+

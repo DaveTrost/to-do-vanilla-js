@@ -48,7 +48,6 @@ export function removeTask(task) {
 }
 
 export function userLogin(credentials) {
-    console.log('api login', credentials);
     const url = `${URL}/auth/signin`;
     const postObj = {
         method: 'POST',
@@ -59,7 +58,6 @@ export function userLogin(credentials) {
 }
 
 export function userRegister(credentials) {
-    console.log('api register', credentials);
     const url = `${URL}/auth/signup`;
     const postObj = {
         method: 'POST',
