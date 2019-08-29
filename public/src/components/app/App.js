@@ -51,9 +51,6 @@ export class App extends Component {
                     newTodo.reset();
                     newTask.focus();
                 })
-                .catch(err => {
-                    console.log(err);
-                })
                 .finally(() => {
                 });
         });
@@ -63,9 +60,6 @@ export class App extends Component {
             .then(data => {
                 this.state.tasks = data;
                 list.update({ tasks: data });
-            })
-            .catch(err => {
-                console.log(err);
             })
             .finally(() => {
             });
