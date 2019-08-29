@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-Do List</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/reset.css">
+    <link rel="stylesheet" href="src/styles/materialize.css">
+    <link rel="stylesheet" href="src/styles/main.css">
+    <link rel="stylesheet" href="src/components/auth/auth.css">
+</head>
+<body>
+    <div>
+        <nav class="nav-wrapper">
+            <p class="brand-logo center">To-Do List</p>
+        </nav>
+        <div class="background"></div>
+        <main>
+            <div class="login container row offset-top hide">
+                <div class="auth-form col s10 offset-s1">
+                    <form id="login" action="#">
+                        <h5 class="centered">Sign In</h5>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">email</i>
+                            <input id="icon_prefix" type="email" name="email" placeholder="email" class="validate">
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="icon_prefix" type="password" name="password" placeholder="password" class="validate">
+                        </div>
+                        <div class="input-field col s12">
+                            <button type="submit" class="waves-effect waves-light btn-large">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col s10 offset-s1 auth-switch">
+                    <a id="switch-to-register" href="#">Need an account? <b>Sign up!</b></a>
+                </div>
+            </div>
+            <div class="register container row offset-top ">
+                <div class="auth-form col s10 offset-s1">
+                    <form id="register" action="#">
+                        <h5 class="centered">Register</h5>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">email</i>
+                            <input id="icon_prefix" type="email" name="email" placeholder="email" class="validate">
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">person</i>
+                            <input id="icon_prefix" type="text" name="name" placeholder="name" class="validate">
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="icon_prefix" type="password" name="password" placeholder="password" class="validate">
+                        </div>
+                        <div class="input-field col s12">
+                            <button type="submit" class="waves-effect waves-light btn-large">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col s10 offset-s1 auth-switch">
+                    <a id="switch-to-login" href="#">Have an account? <b>Login Here</b></a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
