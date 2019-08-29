@@ -20,7 +20,7 @@ export class TodoList extends Component {
     }
 }
 
-class TodoItem extends Component {
+export class TodoItem extends Component {
     onRender(dom) {
         const checkbox = dom.querySelector('input[type="checkbox"]');
         checkbox.addEventListener('click', () => {
