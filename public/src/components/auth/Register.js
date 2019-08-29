@@ -22,7 +22,7 @@ export class Register extends Component {
 
     renderHTML() {
         return /*html*/`
-            <div class="register container row offset-top ">
+            <div class="register container row offset-top hide">
                 <div class="auth-form col s10 offset-s1">
                     <form id="register" action="#">
                         <h5 class="centered">Register</h5>

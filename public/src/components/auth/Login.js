@@ -21,7 +21,7 @@ export class Login extends Component {
 
     renderHTML() {
         return /*html*/`
-            <div class="login container row offset-top hide">
+            <div class="login container row offset-top">
                 <div class="auth-form col s10 offset-s1">
                     <form id="login" action="#">
                         <h5 class="centered">Sign In</h5>
