@@ -10,6 +10,10 @@ export default {
         const item = localStorage.getItem(TOKEN_KEY);
         return item ? (JSON.parse(item).id) : null;
     },
+    getName() {
+        const item = localStorage.getItem(TOKEN_KEY);
+        return item ? (JSON.parse(item).name) : null;
+    },
     setToken(tokenObj) {
         return localStorage.setItem(TOKEN_KEY, JSON.stringify(tokenObj));
     },

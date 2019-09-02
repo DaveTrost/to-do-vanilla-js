@@ -7,7 +7,7 @@ import store from '../../services/store.js';
 export class App extends Component {
 
     onRender(dom) {
-        const header = new Header();
+        const header = new Header({ displayName: store.getName() });
         dom.prepend(header.renderDOM());
 
         const newTodo = dom.querySelector('#new-todo');
@@ -43,6 +43,8 @@ export class App extends Component {
         newTodo.addEventListener('submit', event => {
             event.preventDefault();
 
+            newTask.value = newTask.value.trim();
+            if(newTask.value === '') return;
             const taskObj = { task: newTask.value };
             addTask(taskObj, store.getId())
                 .then(taskResponse => {

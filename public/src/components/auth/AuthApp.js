@@ -72,7 +72,7 @@ class Background extends Component {
 }
 
 function openApp(user) {
-    store.setToken({ token: user.token, id: user.id });
+    store.setToken({ token: user.token, id: user.id, name: user.name });
     // const searchParams = new URLSearchParams(location.search);
     // location = searchParams.get('redirect') || './cat-list.html';
     location = './index.html';

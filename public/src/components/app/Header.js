@@ -14,9 +14,10 @@ export class Header extends Component {
     }
 
     renderHTML() {
+        const displayName = this.props.displayName ? this.props.displayName + '\'s ' : '';
         return /*html*/`
             <nav class="nav-wrapper">
-                <p class="brand-logo center">To-Do List</p>
+                <p class="brand-logo center">${displayName}To-Do List</p>
                 <ul class="right">
                     <li class="logout hide"><a href="auth.html">Logout</a></li>
                 </ul>
